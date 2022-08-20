@@ -3,10 +3,11 @@ A webapp GUI for Harper
 
 To run, clone this repo
 ```
-git clone https://github.com/dangminhduc1101/-harperGUI.git
+git clone https://github.com/dangminhduc1101/harperGUI.git
 ```
 Then 
 ```
+cd harperGUI
 npm install
 ```
 And 
