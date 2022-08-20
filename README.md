@@ -1,4 +1,4 @@
-# -harperGUI
+# harperGUI
 A webapp GUI for Harper
 
 To run, clone this repo
