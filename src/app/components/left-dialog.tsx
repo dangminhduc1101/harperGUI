@@ -36,6 +36,12 @@ export default function LeftDialogPanel() {
                         sx={{width:300}}
                         renderInput={(params) => <TextField {...params} label="Port" />}
                     />
+                    <Autocomplete
+                        id="baud"
+                        options={comList}
+                        sx={{width:300}}
+                        renderInput={(params) => <TextField {...params} label="Baud" />}
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
