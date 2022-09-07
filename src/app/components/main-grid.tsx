@@ -1,23 +1,31 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Divider } from "@mui/material";
 import React from "react";
+import LeftDialogPanel from "./left-dialog";
+import RightDialogPanel from "./right-dialog";
 
 export default function MainGrid() {
   return (
-    <Grid container>
-      <Grid item xl={4} lg={6} md={12}>
+    <Grid container spacing={2}>
+      <Grid item xl={4} lg={4} md={12}>
         <Typography variant="h4" align="center">
-          harperGUI
+          Left Controls
+        </Typography>
+        <LeftDialogPanel />
+      </Grid>
+      <Divider orientation="vertical" flexItem>
+      </Divider>
+      <Grid item xl={4} lg={4} md={12}>
+        <Typography variant="h4" align="center">
+          Perception
         </Typography>
       </Grid>
-      <Grid item xl={4} lg={12} md={12}>
+      <Divider orientation="vertical" flexItem>
+      </Divider>
+      <Grid item xl={4} lg={4} md={12}>
         <Typography variant="h4" align="center">
-          harperGUI
+          Right Controls
         </Typography>
-      </Grid>
-      <Grid item xl={4} lg={6} md={12}>
-        <Typography variant="h4" align="center">
-          harperGUI
-        </Typography>
+        <RightDialogPanel />
       </Grid>
     </Grid>
   );

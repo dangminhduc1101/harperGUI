@@ -22,7 +22,10 @@ export default function MyAppBar() {
         <Button
           variant="text"
           sx={{ color: "white" }}
-          onClick={() => setCount2(count2 + 1)}
+          onClick={() => {
+            setCount2(count2 + 1);
+            window.location.href="https://github.com/dangminhduc1101/harperGUI";
+          }}
         >
           GITHUB
         </Button>
