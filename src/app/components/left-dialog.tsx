@@ -1,5 +1,18 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, List, ListItem, ListItemButton, ListItemText, Slider, TextField, Typography } from "@mui/material";
+import { Autocomplete, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, List, ListItem, ListItemButton, ListItemText, Slider, TextField, Typography } from "@mui/material";
 import React from "react";
+
+const comList = [
+    {label: "COM1"},
+    {label: "COM2"},
+    {label: "COM3"},
+    {label: "COM4"},
+    {label: "COM5"},
+    {label: "COM6"},
+    {label: "COM7"},
+    {label: "COM8"},
+    {label: "COM9"},
+    {label: "COM10"},
+]
 
 export default function LeftDialogPanel() {
     const [open, setOpen] = React.useState(false);
@@ -17,11 +30,18 @@ export default function LeftDialogPanel() {
             <Button onClick={handleClickOpen}>Open Settings</Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
-                    <TextField>
+                    <Autocomplete
                         id="port"
-                        label="Port (0-100)"
-                        variant="standard"
-                    </TextField>
+                        options={comList}
+                        sx={{width:300}}
+                        renderInput={(params) => <TextField {...params} label="Port" />}
+                    />
+                    <Autocomplete
+                        id="baud"
+                        options={comList}
+                        sx={{width:300}}
+                        renderInput={(params) => <TextField {...params} label="Baud" />}
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

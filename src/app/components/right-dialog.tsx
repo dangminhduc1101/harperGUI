@@ -1,64 +1,53 @@
-import { Button, Dialog, DialogTitle, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
+import { Autocomplete, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, List, ListItem, ListItemButton, ListItemText, Slider, TextField, Typography } from "@mui/material";
 import React from "react";
 
-export interface DialogueProps {
-    open: boolean;
-    selectedValue: string;
-    onClose: (value: string) => void;
-}
-
-function RightDialog(props:DialogueProps) {
-    const { onClose, selectedValue, open } = props;
-
-    const handleClose = () => {
-        onClose(selectedValue);
-    };
-
-    const handleListItemClick = (value: string) => {
-        onClose(value);
-    };
-
-    return (
-        <Dialog onClose={handleClose} open={open}>
-            <DialogTitle>Right Settings</DialogTitle>
-            <List>
-                <ListItem>
-                    <ListItemButton>
-                        <ListItemText primary="Port"/>
-                    </ListItemButton>
-                </ListItem>
-            </List>
-        </Dialog>
-    );
-}
+const comList = [
+    {label: "COM1"},
+    {label: "COM2"},
+    {label: "COM3"},
+    {label: "COM4"},
+    {label: "COM5"},
+    {label: "COM6"},
+    {label: "COM7"},
+    {label: "COM8"},
+    {label: "COM9"},
+    {label: "COM10"},
+]
 
 export default function RightDialogPanel() {
     const [open, setOpen] = React.useState(false);
-    const [selectedValue, setSelectedValue] = React.useState("");
 
     const handleClickOpen = () => {
         setOpen(true);
     };
-    
-    const handleClose = (value: string) => {
+
+    const handleClose = () => {
         setOpen(false);
-        setSelectedValue(value);
     };
 
     return (
         <div>
-            <Typography variant="h5" component="div">
-                Select your settings below:
-            </Typography>
-            <br />
-            <Button onClick={handleClickOpen}>
-                Open settings
-            </Button>
-            <RightDialog
-                selectedValue={selectedValue}
-                open={open}
-                onClose={handleClose}
-            />
+            <Button onClick={handleClickOpen}>Open Settings</Button>
+            <Dialog open={open} onClose={handleClose}>
+                <DialogContent>
+                    <Autocomplete
+                        id="port"
+                        options={comList}
+                        sx={{width:300}}
+                        renderInput={(params) => <TextField {...params} label="Port" />}
+                    />
+                    <Autocomplete
+                        id="baud"
+                        options={comList}
+                        sx={{width:300}}
+                        renderInput={(params) => <TextField {...params} label="Baud" />}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleClose}>Confirm</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 }
